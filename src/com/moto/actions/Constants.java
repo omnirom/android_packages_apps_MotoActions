@@ -137,6 +137,9 @@ public class Constants {
     // Assistant key
     public static final String ASSISTANT_KEY = "assistant_button";
 
+    // Gestures key
+    public static final String FP_GESTURES_KEY = "fp_gestures";
+
     // Holds <preference_key> -> <proc_node> mapping
     public static final Map<String, String> sBooleanNodePreferenceMap = new HashMap<>();
 
@@ -200,7 +203,7 @@ public class Constants {
         Log.w("SHIT", "key = " + key);
         if (FP_HOME_KEY.equals(key) || FP_HOME_KEY_OFF.equals(key) || FP_HAPTIC_KEY.equals(key) || FP_HAPTIC_SCREENOFF_KEY.equals(key)
                 || FP_PROXIMITY_CHECK_SCREENOFF_KEY.equals(key)) {
-            
+
                 Settings.System.putInt(context.getContentResolver(),
                         key, GetBooleanPreference(context, key) ? 1 : 0);
         } else {

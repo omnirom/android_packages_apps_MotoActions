@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.content.Context;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.SwitchPreference;
 import android.hardware.fingerprint.FingerprintManager;
@@ -33,10 +34,11 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import static com.moto.actions.Constants.FP_HOME_KEY;
-import static com.moto.actions.Constants.FP_HOME_KEY_OFF;
+import static com.moto.actions.Constants.*;
 
 public class FPGestureSettingsFragment extends PreferenceFragment {
+
+
 
     private SwitchPreference mFPScreenOffGesture;
     private PreferenceCategory mFPScreenOffCategory;
@@ -107,6 +109,30 @@ public class FPGestureSettingsFragment extends PreferenceFragment {
         mFPScreenOffCategory = (PreferenceCategory) findPreference("fp_keys_scr_off");
         mFPScreenOnCategory = (PreferenceCategory) findPreference("fp_keys_scr_on");
         updatePrefs(isFPGestureEnabled());
+
+        if (!getResources().getBoolean(R.bool.config_device_support_swipe_updown_gesture)) {
+             hideUnsupportedFeature(FP_KEY_UP);
+             hideUnsupportedFeature(FP_KEY_UP_OFF);
+             hideUnsupportedFeature(FP_KEY_DOWN);
+             hideUnsupportedFeature(FP_KEY_DOWN_OFF);
+        }
+
+        if (!getResources().getBoolean(R.bool.config_device_support_doubletap_gesture)) {
+             hideUnsupportedFeature(FP_KEY_DBLTAP);
+             hideUnsupportedFeature(FP_KEY_DBLTAP_OFF);
+        }
+
+        if (!getResources().getBoolean(R.bool.config_device_support_longpress_gesture)) {
+             hideUnsupportedFeature(FP_KEY_HOLD);
+             hideUnsupportedFeature(FP_KEY_HOLD_OFF);
+        }
+    }
+
+    private void hideUnsupportedFeature(String key) {
+        Preference pref = getPreferenceScreen().findPreference(key);
+        if (pref != null) {
+            getPreferenceScreen().removePreference(pref);
+        }
     }
 
     private CompoundButton.OnCheckedChangeListener mFPGesturePrefListener =

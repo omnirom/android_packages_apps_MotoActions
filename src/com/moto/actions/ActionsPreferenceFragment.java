@@ -18,9 +18,13 @@
 package com.moto.actions;
 
 import android.os.Bundle;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
 
+import static com.moto.actions.Constants.*;
+
 public class ActionsPreferenceFragment extends PreferenceFragment {
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -30,5 +34,19 @@ public class ActionsPreferenceFragment extends PreferenceFragment {
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.main_panel);
+
+        if (!getResources().getBoolean(R.bool.config_device_support_assistant_key)) {
+            Preference pref = getPreferenceScreen().findPreference(ASSISTANT_KEY);
+            if (pref != null) {
+                getPreferenceScreen().removePreference(pref);
+            }
+        }
+
+        if (!getResources().getBoolean(R.bool.config_device_support_fingerprint_gestures)) {
+            Preference pref = getPreferenceScreen().findPreference(FP_GESTURES_KEY);
+            if (pref != null) {
+                getPreferenceScreen().removePreference(pref);
+            }
+        }
     }
 }
