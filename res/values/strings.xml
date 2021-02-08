@@ -144,8 +144,7 @@
 
     <string name="tile_refresh_rate">Screen refresh rate</string>
 
-    <string name="advanced_settings">Custom key action</string>
-    <string name="assistant_button_action">Action</string>
+    <string name="assistant_button_action">Assistant key custom action</string>
 
     <!-- Stylus -->
     <string name="stylus_title">Stylus settings</string>
