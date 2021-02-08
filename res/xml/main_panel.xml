@@ -54,12 +54,14 @@
         android:title="@string/assistant_button_action"
         android:summary="%s"
         android:entries="@array/fp_keys_listArray"
-        android:entryValues="@array/fp_keys_listValues" />
+        android:entryValues="@array/fp_keys_listValues"
+        android:icon="@drawable/ic_assistant_key" />
 
     <Preference
         android:key="stylus"
         android:title="@string/stylus_title"
-        android:persistent="false" >
+        android:persistent="false"
+        android:icon="@drawable/ic_stylus" >
         <intent
              android:targetPackage="com.motorola.stylus"
              android:targetClass="com.motorola.stylus.settings.activity.SettingsActivity" />
