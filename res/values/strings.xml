@@ -146,4 +146,7 @@
 
     <string name="advanced_settings">Custom key action</string>
     <string name="assistant_button_action">Action</string>
+
+    <!-- Stylus -->
+    <string name="stylus_title">Stylus settings</string>
 </resources>

@@ -18,6 +18,7 @@
 package com.moto.actions;
 
 import android.os.Bundle;
+import android.os.SystemProperties;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
 
@@ -47,6 +48,18 @@ public class ActionsPreferenceFragment extends PreferenceFragment {
             if (pref != null) {
                 getPreferenceScreen().removePreference(pref);
             }
+        }
+
+        try {
+            String deviceProp = SystemProperties.get("ro.product.product.device", "sofia");
+            if (!deviceProp.contains("sofiap")) {
+                Preference pref = getPreferenceScreen().findPreference("stylus");
+                if (pref != null) {
+                    getPreferenceScreen().removePreference(pref);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

@@ -55,4 +55,13 @@
         android:summary="%s"
         android:entries="@array/fp_keys_listArray"
         android:entryValues="@array/fp_keys_listValues" />
+
+    <Preference
+        android:key="stylus"
+        android:title="@string/stylus_title"
+        android:persistent="false" >
+        <intent
+             android:targetPackage="com.motorola.stylus"
+             android:targetClass="com.motorola.stylus.settings.activity.SettingsActivity" />
+    </Preference>
 </PreferenceScreen>
