@@ -50,7 +50,7 @@ public class ActionsPreferenceFragment extends PreferenceFragment {
             }
         }
 
-        try {
+         try {
             String deviceProp = SystemProperties.get("ro.product.product.device", "sofia");
             if (!deviceProp.contains("sofiap")) {
                 Preference pref = getPreferenceScreen().findPreference("stylus");

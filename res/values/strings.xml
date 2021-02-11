@@ -41,6 +41,10 @@
     <string name="fingerprint_swipe_up_dlg_title">Select action for swipe up</string>
     <string name="fingerprint_swipe_down_title">Swipe down</string>
     <string name="fingerprint_swipe_down_dlg_title">Select action for swipe down</string>
+    <string name="fingerprint_swipe_left_title">Swipe left</string>
+    <string name="fingerprint_swipe_left_dlg_title">Select action for swipe left</string>
+    <string name="fingerprint_swipe_right_title">Swipe right</string>
+    <string name="fingerprint_swipe_right_dlg_title">Select action for swipe right</string>
 
     <!-- Fingerprint gestures screen off -->
     <string name="fingerprint_gestures_screenoff_title">Fingerprint gestures when screen off</string>

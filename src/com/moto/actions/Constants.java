@@ -40,13 +40,17 @@ public class Constants {
     public static final int FP_DTAP_SCANCODE = 622;
     public static final int FP_UP_SCANCODE = 618;
     public static final int FP_DOWN_SCANCODE = 619;
+    public static final int FP_LEFT_SCANCODE = 621;
+    public static final int FP_RIGHT_SCANCODE = 620;
     public static final int ASSISTANT_SCANCODE = 217;
     public static final int[] sSupportedFPGestures = new int[]{
             FP_TAP_SCANCODE,
             FP_HOLD_SCANCODE,
             FP_DTAP_SCANCODE,
             FP_UP_SCANCODE,
-            FP_DOWN_SCANCODE
+            FP_DOWN_SCANCODE,
+            FP_LEFT_SCANCODE,
+            FP_RIGHT_SCANCODE
     };
 
     // FP actions
@@ -114,12 +118,16 @@ public class Constants {
     public static final String FP_KEY_HOLD = "fp_key_hold";
     public static final String FP_KEY_UP = "fp_key_up";
     public static final String FP_KEY_DOWN = "fp_key_down";
+    public static final String FP_KEY_LEFT = "fp_key_left";
+    public static final String FP_KEY_RIGHT = "fp_key_right";
 
     public static final String FP_KEYS_OFF = "fp_keys_off";
     public static final String FP_KEY_DBLTAP_OFF = "fp_key_dbltap_off";
     public static final String FP_KEY_HOLD_OFF = "fp_key_hold_off";
     public static final String FP_KEY_UP_OFF = "fp_key_up_off";
     public static final String FP_KEY_DOWN_OFF = "fp_key_down_off";
+    public static final String FP_KEY_LEFT_OFF = "fp_key_left_off";
+    public static final String FP_KEY_RIGHT_OFF = "fp_key_right_off";
 
     public static final int[] sScreenOffSupportedActions = new int[]{
             ACTION_POWER,
@@ -157,12 +165,16 @@ public class Constants {
         FP_KEY_HOLD,
         FP_KEY_UP,
         FP_KEY_DOWN,
+        FP_KEY_LEFT,
+        FP_KEY_RIGHT,
         FP_KEYS_OFF,
         FP_KEY_DBLTAP_OFF,
         FP_KEY_HOLD_OFF,
         FP_KEY_UP_OFF,
         FP_KEY_DOWN_OFF,
-        FP_HOME_KEY_OFF
+        FP_HOME_KEY_OFF,
+        FP_KEY_LEFT_OFF,
+        FP_KEY_RIGHT_OFF
     };
 
     static {
@@ -176,11 +188,15 @@ public class Constants {
         sNodeDefaultMap.put(FP_KEY_HOLD, "0");
         sNodeDefaultMap.put(FP_KEY_UP, "0");
         sNodeDefaultMap.put(FP_KEY_DOWN, "0");
+        sNodeDefaultMap.put(FP_KEY_LEFT, "0");
+        sNodeDefaultMap.put(FP_KEY_RIGHT, "0");
         sNodeDefaultMap.put(FP_KEYS_OFF, "0");
         sNodeDefaultMap.put(FP_KEY_DBLTAP_OFF, "0");
         sNodeDefaultMap.put(FP_KEY_HOLD_OFF, "0");
         sNodeDefaultMap.put(FP_KEY_UP_OFF, "0");
         sNodeDefaultMap.put(FP_KEY_DOWN_OFF, "0");
+        sNodeDefaultMap.put(FP_KEY_LEFT_OFF, "0");
+        sNodeDefaultMap.put(FP_KEY_RIGHT_OFF, "0");
     }
 
     public static boolean isPreferenceEnabled(Context context, String key) {

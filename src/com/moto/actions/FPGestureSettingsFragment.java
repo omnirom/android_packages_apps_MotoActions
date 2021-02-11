@@ -117,6 +117,13 @@ public class FPGestureSettingsFragment extends PreferenceFragment {
              hideUnsupportedFeature(FP_KEY_DOWN_OFF);
         }
 
+        if (!getResources().getBoolean(R.bool.config_device_support_swipe_leftright_gesture)) {
+            hideUnsupportedFeature(FP_KEY_LEFT);
+            hideUnsupportedFeature(FP_KEY_LEFT_OFF);
+            hideUnsupportedFeature(FP_KEY_RIGHT);
+            hideUnsupportedFeature(FP_KEY_RIGHT_OFF);
+       }
+
         if (!getResources().getBoolean(R.bool.config_device_support_doubletap_gesture)) {
              hideUnsupportedFeature(FP_KEY_DBLTAP);
              hideUnsupportedFeature(FP_KEY_DBLTAP_OFF);

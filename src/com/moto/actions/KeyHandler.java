@@ -474,6 +474,12 @@ public class KeyHandler implements DeviceKeyHandler {
             case FP_DOWN_SCANCODE:
                 action = getSystemSetting(mContext, isScreenOn ? FP_KEY_DOWN : FP_KEY_DOWN_OFF);
                 break;
+            case FP_LEFT_SCANCODE:
+                action = getSystemSetting(mContext, isScreenOn ? FP_KEY_LEFT : FP_KEY_LEFTN_OFF);
+                break;
+            case FP_RIGHT_SCANCODE:
+                action = getSystemSetting(mContext, isScreenOn ? FP_KEY_RIGHT : FP_KEY_RIGHT_OFF);
+                break;
             case ASSISTANT_SCANCODE:
                 action = getSystemSetting(mContext, ASSISTANT_KEY);
                 break;

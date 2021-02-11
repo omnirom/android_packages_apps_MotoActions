@@ -75,6 +75,24 @@
             android:defaultValue="0"
             android:entries="@array/fp_keys_listArray"
             android:entryValues="@array/fp_keys_listValues" />
+
+        <ListPreference
+            android:title="@string/fingerprint_swipe_left_title"
+            android:summary="%s"
+            android:dialogTitle="@string/fingerprint_swipe_left_dlg_title"
+            android:key="fp_key_left"
+            android:defaultValue="0"
+            android:entries="@array/fp_keys_listArray"
+            android:entryValues="@array/fp_keys_listValues" />
+
+        <ListPreference
+            android:title="@string/fingerprint_swipe_right_title"
+            android:summary="%s"
+            android:dialogTitle="@string/fingerprint_swipe_right_dlg_title"
+            android:key="fp_key_right"
+            android:defaultValue="0"
+            android:entries="@array/fp_keys_listArray"
+            android:entryValues="@array/fp_keys_listValues" />
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -141,11 +159,28 @@
             android:title="@string/fingerprint_swipe_down_title"
             android:summary="%s"
             android:dialogTitle="@string/fingerprint_swipe_down_dlg_title"
-            android:key="fp_key_rdown_off"
+            android:key="fp_key_down_off"
             android:defaultValue="0"
             android:entries="@array/fp_keys_screen_off_listArray"
             android:entryValues="@array/fp_keys_screen_off_listValues" />
 
+        <ListPreference
+            android:title="@string/fingerprint_swipe_left_title"
+            android:summary="%s"
+            android:dialogTitle="@string/fingerprint_swipe_left_dlg_title"
+            android:key="fp_key_left_off"
+            android:defaultValue="0"
+            android:entries="@array/fp_keys_screen_off_listArray"
+            android:entryValues="@array/fp_keys_screen_off_listValues" />
+
+        <ListPreference
+            android:title="@string/fingerprint_swipe_right_title"
+            android:summary="%s"
+            android:dialogTitle="@string/fingerprint_swipe_right_dlg_title"
+            android:key="fp_key_right_off"
+            android:defaultValue="0"
+            android:entries="@array/fp_keys_screen_off_listArray"
+            android:entryValues="@array/fp_keys_screen_off_listValues" />
     </PreferenceCategory>
 
 </PreferenceScreen>
