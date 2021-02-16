@@ -38,8 +38,6 @@ import static com.moto.actions.Constants.*;
 
 public class FPGestureSettingsFragment extends PreferenceFragment {
 
-
-
     private SwitchPreference mFPScreenOffGesture;
     private PreferenceCategory mFPScreenOffCategory;
     private PreferenceCategory mFPScreenOnCategory;
@@ -56,8 +54,7 @@ public class FPGestureSettingsFragment extends PreferenceFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = LayoutInflater.from(getContext()).inflate(R.layout.fp_gesture, container, false);
         ((ViewGroup) view).addView(super.onCreateView(inflater, container, savedInstanceState));
         return view;
@@ -80,25 +77,24 @@ public class FPGestureSettingsFragment extends PreferenceFragment {
         });
 
         mSwitchBarText = switchBar.findViewById(R.id.switch_text);
-        mSwitchBarText.setText(isFPGestureEnabled() ? R.string.switch_bar_on :
-                R.string.switch_bar_off);
+        mSwitchBarText.setText(isFPGestureEnabled() ? R.string.switch_bar_on : R.string.switch_bar_off);
     }
 
-    private void updatePrefs(boolean enabled){
+    private void updatePrefs(boolean enabled) {
         Editor prefEditor = PreferenceManager.getDefaultSharedPreferences(getActivity()).edit();
         prefEditor.putBoolean(FP_HOME_KEY, enabled);
         prefEditor.apply();
         mFPScreenOnCategory.setEnabled(enabled);
         mFPScreenOffGesture.setEnabled(enabled);
         mFPScreenOffCategory.setEnabled(enabled);
-        if(enabled){
+        if (enabled) {
             boolean hasEnrolledFingerprints = hasEnrolledFingerprints();
             mFPScreenOffGesture.setEnabled(!hasEnrolledFingerprints);
             mFPScreenOffCategory.setEnabled(!hasEnrolledFingerprints);
         }
     }
 
-    private boolean isFPGestureEnabled(){
+    private boolean isFPGestureEnabled() {
         return Constants.isPreferenceEnabled(getActivity(), FP_HOME_KEY);
     }
 
@@ -111,39 +107,38 @@ public class FPGestureSettingsFragment extends PreferenceFragment {
         updatePrefs(isFPGestureEnabled());
 
         if (!getResources().getBoolean(R.bool.config_device_support_swipe_updown_gesture)) {
-             hideUnsupportedFeature(FP_KEY_UP);
-             hideUnsupportedFeature(FP_KEY_UP_OFF);
-             hideUnsupportedFeature(FP_KEY_DOWN);
-             hideUnsupportedFeature(FP_KEY_DOWN_OFF);
+            hideUnsupportedFeature(FP_KEY_UP, mFPScreenOnCategory);
+            hideUnsupportedFeature(FP_KEY_UP_OFF, mFPScreenOffCategory);
+            hideUnsupportedFeature(FP_KEY_DOWN, mFPScreenOnCategory);
+            hideUnsupportedFeature(FP_KEY_DOWN_OFF, mFPScreenOffCategory);
         }
 
         if (!getResources().getBoolean(R.bool.config_device_support_swipe_leftright_gesture)) {
-            hideUnsupportedFeature(FP_KEY_LEFT);
-            hideUnsupportedFeature(FP_KEY_LEFT_OFF);
-            hideUnsupportedFeature(FP_KEY_RIGHT);
-            hideUnsupportedFeature(FP_KEY_RIGHT_OFF);
-       }
+            hideUnsupportedFeature(FP_KEY_LEFT, mFPScreenOnCategory);
+            hideUnsupportedFeature(FP_KEY_LEFT_OFF, mFPScreenOffCategory);
+            hideUnsupportedFeature(FP_KEY_RIGHT, mFPScreenOnCategory);
+            hideUnsupportedFeature(FP_KEY_RIGHT_OFF, mFPScreenOffCategory);
+        }
 
         if (!getResources().getBoolean(R.bool.config_device_support_doubletap_gesture)) {
-             hideUnsupportedFeature(FP_KEY_DBLTAP);
-             hideUnsupportedFeature(FP_KEY_DBLTAP_OFF);
+            hideUnsupportedFeature(FP_KEY_DBLTAP, mFPScreenOnCategory);
+            hideUnsupportedFeature(FP_KEY_DBLTAP_OFF, mFPScreenOffCategory);
         }
 
         if (!getResources().getBoolean(R.bool.config_device_support_longpress_gesture)) {
-             hideUnsupportedFeature(FP_KEY_HOLD);
-             hideUnsupportedFeature(FP_KEY_HOLD_OFF);
+            hideUnsupportedFeature(FP_KEY_HOLD, mFPScreenOnCategory);
+            hideUnsupportedFeature(FP_KEY_HOLD_OFF, mFPScreenOffCategory);
         }
     }
 
-    private void hideUnsupportedFeature(String key) {
-        Preference pref = getPreferenceScreen().findPreference(key);
+    private void hideUnsupportedFeature(String key, PreferenceCategory category) {
+        Preference pref = category.findPreference(key);
         if (pref != null) {
-            getPreferenceScreen().removePreference(pref);
+            category.removePreference(pref);
         }
     }
 
-    private CompoundButton.OnCheckedChangeListener mFPGesturePrefListener =
-        new CompoundButton.OnCheckedChangeListener() {
+    private CompoundButton.OnCheckedChangeListener mFPGesturePrefListener = new CompoundButton.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(CompoundButton compoundButton, boolean enable) {
             updatePrefs(enable);
@@ -151,8 +146,9 @@ public class FPGestureSettingsFragment extends PreferenceFragment {
         }
     };
 
-    private boolean hasEnrolledFingerprints(){
-        FingerprintManager fingerprintManager = (FingerprintManager) getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
+    private boolean hasEnrolledFingerprints() {
+        FingerprintManager fingerprintManager = (FingerprintManager) getActivity()
+                .getSystemService(Context.FINGERPRINT_SERVICE);
         return fingerprintManager.hasEnrolledFingerprints();
     }
 
