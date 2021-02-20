@@ -404,14 +404,17 @@ public class KeyHandler implements DeviceKeyHandler {
         } else if (isFPScanCode) {
             if (!isScreenOn && isFPGestureEnabledOnScreenOff
                 || isScreenOn && isFPGestureEnabled) {
-                processFPScancode(scanCode, isScreenOn);
+                return processFPScancode(scanCode, isScreenOn);
+            } else {
+                return false;
             }
         }
 
         if (isAssistantCode) {
-            processFPScancode(scanCode, true);
+            return processFPScancode(scanCode, true);
         }
-        return true;
+
+        return false;
     }
 
     public boolean canHandleKeyEvent(KeyEvent event) {
@@ -455,7 +458,7 @@ public class KeyHandler implements DeviceKeyHandler {
         return null;
     }
 
-    private void processFPScancode(int scanCode, boolean isScreenOn) {
+    private boolean processFPScancode(int scanCode, boolean isScreenOn) {
         int action = 0;
         Log.i(TAG, "scancode" + scanCode);
         switch (scanCode) {
@@ -490,6 +493,8 @@ public class KeyHandler implements DeviceKeyHandler {
         if (isActionSupported || scanCode == ASSISTANT_SCANCODE) {
             fireFPAction(action);
         }
+
+        return action != 0;
     }
 
     private void fireFPAction(int action) {
